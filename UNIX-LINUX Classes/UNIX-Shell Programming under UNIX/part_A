@@ -1,0 +1,15 @@
+#Ugur Altindag
+#Shell Programming under UNIX
+#Lab1-Part A
+#10/08/2007
+
+tput clear                          #Clear screen
+echo $1 $2 $3 $4 $5		    #Print first 5 arguments
+sleep 5				    #wait 5 seconds
+shift; shift; shift; shift; shift   #shifts 5 times positions of the arguments
+echo $1 $2 $3 $4 $5                 #print second 5 arguments
+sleep 5
+shift; shift; shift; shift; shift
+echo $1 $2 $3 $4 $5                 #print third 5 arguments
+sleep 5
+exec /home/jars/lab1

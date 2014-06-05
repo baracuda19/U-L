@@ -1,0 +1,176 @@
+#!/bin/bash
+
+tput clear
+function function_color   #beginning of the function that choses bg anf fg color
+{
+
+let bg=`echo $RANDOM | cut -c 1`   #chooses background color code randomly
+let fg=`echo $RANDOM | cut -c 1`   #chooses foreground color code randomly
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   let bg=`echo $RANDOM | cut -c 1`
+   let fg=`echo $RANDOM | cut -c 1`
+
+	if [ $bg || $fg -gt 7 ]     #catches the wrong color codes
+	then
+	   bg=6
+	   fg=3
+	fi
+fi
+
+if [ $bg -gt 7 ]                   #catches the wrong color codes
+then
+   bg=$bg-2
+fi
+
+if [ $fg -gt 7 ]                   #catches the wrong color codes
+then
+   fg=$fg-2
+fi
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   bg=$bg-1
+fi
+
+tput setab $bg                     #sets background color dynamically
+tput setaf $fg                     #sets foreground color dyanmically
+}				   #end of the function
+
+function flash_a_message
+{
+
+tput setab 4
+     tput clear
+     tput setaf 3
+     tput clear
+   
+     for counter in 1 2 3 4 5
+     do
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo $1
+     sleep 0.5
+     tput clear
+     sleep 0.5
+     done
+}
+
+
+
+
+
+function_color			   #dynamically chooses screen colors
+tput clear
+
+PS3=">>>>: "
+echo 
+echo 
+echo
+echo
+echo
+echo
+echo
+echo "	parent-$PPID	child-$$	System Information"
+echo
+select option in "Memory" "Paging Information" "Disk Information" Return
+do
+case $option in
+
+"Memory") function_color;
+	  tput clear;
+	  
+	  #for counter in 0 1 2 3 4 5 6
+	  #do
+	  
+	  #mem_card=`lsdev -C | grep memdma1 | cut -c20-40`
+
+	  #mem_card=`lsdev -C | grep mem$counter | cut -c 1-4`
+	  #lsattr -E -l $mem_card -F'descriptive value' 2> /dev/null > /dev/null
+	  #if [ $? -ne 255 ]
+	  #then
+	  
+	  echo;
+	  echo;
+	  #echo Memory Card = $mem_card
+	  echo;
+	  echo;
+	  echo;
+	  #fi
+	  #if [ $? -eq 255 ]
+	  #then
+	  #exit 10
+	  #fi
+	  echo;
+	  echo;
+	  echo "This is memory info";
+	  echo "Depress Enter to Continue:";
+	  read REPLY?;
+	  tput clear;
+	  #done
+	  exit 10;;
+	  
+	  
+"Paging Information") function_color;
+		      tput clear;
+                      
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      echo
+		      #swapon -s
+		      echo
+		      echo "This is paging info";
+		      #read REPLY? #"Depress Enter to Continue:"
+		      sleep 10;
+		      tput clear;
+		      tput clear
+		      exit 20;;
+		      
+"Disk Information") function_color;
+		    tput clear;
+                    #for counter in `lspv | cut -f1 -d " "`
+		    #do
+		    echo
+		    echo
+		    echo
+		    echo 
+		    echo
+		    echo
+		    echo
+		    echo
+		    echo
+		    echo "This is disk info"
+		    #lspv $counter
+		    echo
+		    echo
+		    read REPLY?"Depress Enter to Continue:"
+		    tput clear
+		    #done
+		    exit 30;; 
+
+Return) tput clear;
+        exec /home/jars/lab4;;
+
+*) flash_a_message "<<<<<<<<<<ERROR!!!  YOU ENTER A WRONG MENU OPTION>>>>>>>>>>";
+   exec /home/jars/sys_info;;
+esac
+done

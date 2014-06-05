@@ -1,0 +1,103 @@
+function flash_a_message
+{
+
+tput setab 4
+     tput clear
+     tput setaf 3
+     tput clear
+   
+     for counter in 1 2 3 4 5
+     do
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo
+     echo "               $1"
+     sleep 0.5
+     tput clear
+     sleep 0.5
+     done
+}
+
+trap "flash_a_message "MEMORY_INFORMATION_COMPLETED"; exec /home/jars/sys_info" 10
+trap "flash_a_message "PAGING_INFORMATION_COMPLETED"; exec /home/jars/sys_info" 20
+trap "flash_a_message "DISK_INFORMATION_COMPLETED"; exec /home/jars/sys_info" 30
+
+tput clear
+function function_color   #beginning of the function that choses bg anf fg color
+{
+
+let bg=`echo $RANDOM | cut -c 1`   #chooses background color code randomly
+let fg=`echo $RANDOM | cut -c 1`   #chooses foreground color code randomly
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   let bg=`echo $RANDOM | cut -c 1`
+   let fg=`echo $RANDOM | cut -c 1`
+
+	if [ $bg || $fg -gt 7 ]     #catches the wrong color codes
+	then
+	  let bg=6
+	  let fg=3
+	fi
+fi
+
+if [ $bg -gt 7 ]                   #catches the wrong color codes
+then
+   let bg=$bg-2
+fi
+
+if [ $fg -gt 7 ]                   #catches the wrong color codes
+then
+   let fg=$fg-2
+fi
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   let bg=$bg-1
+fi
+
+tput setab $bg                     #sets background color dynamically
+tput setaf $fg                     #sets foreground color dyanmically
+}				   #end of the function
+
+function_color			   #dynamically chooses screen colors
+tput clear
+
+PS3=">>>>: "
+echo 
+echo 
+echo 
+echo 
+echo 
+echo 
+echo
+echo "		$$	Lab 4 Sub Menu"
+echo
+select option in "System Information" "Future Lab 1" "Future Lab 2" Return
+do
+case $option in
+
+"System Information") tput clear;
+		      exec /home/jars/sys_info;;
+
+"Future Lab 1") tput clear;
+                exec /home/jars/lab4;; 
+
+"Future Lab 2") tput clear;
+                exec /home/jars/lab4;; 
+
+Return) tput clear;
+        exec /home/jars/labs;;
+
+*) flash_a_message "<<<<<<<<<<ERROR!!!  YOU ENTER A WRONG MENU OPTION>>>>>>>>>>";
+   exec /home/jars/lab4;;
+esac
+done

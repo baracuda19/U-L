@@ -1,0 +1,59 @@
+#Ugur Altindag
+#Shell Programming under UNIX
+#Lab1-Part C
+#10/18/2007
+
+tput setab 7
+tput clear                          #Clears screen
+tput setaf 5
+tput clear
+
+N=Name				    #Assign value to a variable
+S=Set
+O=One
+T=Two
+Z=Three
+readonly N S O T Z		    #makes variables readonly
+
+echo "$N $S number-$O $1 $2"     #prints first line of first set 
+shift; shift                         #shifts 2 times positions of the arguments
+echo
+echo
+echo "$N $S number-$O $1 $2" #prints second line of first set
+shift; shift
+echo
+echo
+echo "$N $S number-$O $1"  #prints thitd line of first set
+echo
+sleep 5					#sleeps 5 seconds
+tput clear
+shift
+print "$N $S number-$T $1 $2"  #prints first line of second set
+shift; shift
+echo
+echo
+echo "$N $S number-$T $1 $2" 
+shift; shift
+echo
+echo
+echo "$N $S number-$T $1" 	
+echo
+sleep 5
+tput clear
+shift
+echo "$N $S number-$Z $1 $2"     #prints first line of third set
+shift; shift                   
+echo
+echo
+echo "$N $S number-$Z $1 $2" 
+shift; shift 
+echo
+echo
+echo "$N $S number-$Z $1" 	
+echo 
+sleep 5
+#tput setab 9
+#tput setaf 9
+exec /home/jars/lab1
+
+

@@ -1,0 +1,37 @@
+tput clear
+PS3=">>>>: "
+select option in "Lab 1A" "Lab 1B" "Lab 1C" Exit 
+do
+case $option in
+"Lab 1A") exec /home/jars/part_A john david dana mike lisa laura eric eli nicole michele julie nick brandon jack andrew;;
+"Lab 1B") exec /home/jars/part_B john david dana mike lisa laura eric eli nicole michele julie nick brandon jack andrew;;
+"Lab 1C") exec /home/jars/part_C john david dana mike lisa laura eric eli nicole michele julie nick brandon jack andrew;;
+Exit) tput clear;
+      exec /home/jars/labs;;
+*) tput setab 4;
+   tput clear;
+   tput setaf 3;
+   tput clear;
+   
+   for counter in 1 2 3 4 5
+   do
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo "<<<<<<<<<<ERROR!!!  YOU ENTER A WRONG MENU OPTION>>>>>>>>>>"
+   sleep 0.5
+   tput clear
+   sleep 0.5
+   done
+   
+   exec /home/jars/lab1;;
+esac
+done

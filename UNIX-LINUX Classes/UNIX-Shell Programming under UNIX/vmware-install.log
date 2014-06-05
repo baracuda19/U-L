@@ -1,0 +1,193 @@
+jars@jars-desktop:~/vmware-tools-distrib$ sudo ./vmware-install.pl 
+[sudo] password for jars:
+Creating a new installer database using the tar3 format.
+
+Installing the content of the package.
+
+In which directory do you want to install the binary files? 
+[/usr/bin] 
+
+What is the directory that contains the init directories (rc0.d/ to rc6.d/)? 
+[/etc] 
+
+What is the directory that contains the init scripts? 
+[/etc/init.d] 
+
+In which directory do you want to install the daemon files? 
+[/usr/sbin] 
+
+In which directory do you want to install the library files? 
+[/usr/lib/vmware-tools] 
+
+The path "/usr/lib/vmware-tools" does not exist currently. This program is 
+going to create it, including needed parent directories. Is this what you want?
+[yes] 
+
+In which directory do you want to install the documentation files? 
+[/usr/share/doc/vmware-tools] 
+
+The path "/usr/share/doc/vmware-tools" does not exist currently. This program 
+is going to create it, including needed parent directories. Is this what you 
+want? [yes] 
+
+The installation of VMware Tools 1.0.4 build-56528 for Linux completed 
+successfully. You can decide to remove this software from your system at any 
+time by invoking the following command: "/usr/bin/vmware-uninstall-tools.pl".
+
+Before running VMware Tools for the first time, you need to configure it by 
+invoking the following command: "/usr/bin/vmware-config-tools.pl". Do you want 
+this program to invoke the command for you now? [yes] 
+
+
+Stopping VMware Tools services in the virtual machine:
+   Guest operating system daemon:-ne                                   done
+
+Trying to find a suitable vmhgfs module for your running kernel.
+
+None of the pre-built vmhgfs modules for VMware Tools is suitable for your 
+running kernel.  Do you want this program to try to build the vmhgfs module for
+your system (you need to have a C compiler installed on your system)? [yes] 
+
+Using compiler "/usr/bin/gcc". Use environment variable CC to override.
+
+What is the location of the directory of C header files that match your running
+kernel? [/lib/modules/2.6.22-14-generic/build/include] 
+
+Extracting the sources of the vmhgfs module.
+
+Building the vmhgfs module.
+
+Using 2.6.x kernel build system.
+make: Gehe in Verzeichnis '/tmp/vmware-config0/vmhgfs-only'
+make -C /lib/modules/2.6.22-14-generic/build/include/.. SUBDIRS=$PWD SRCROOT=$PWD/. modules
+make[1]: Betrete Verzeichnis '/usr/src/linux-headers-2.6.22-14-generic'
+  CC [M]  /tmp/vmware-config0/vmhgfs-only/cpName.o
+  CC [M]  /tmp/vmware-config0/vmhgfs-only/cpNameLinux.o
+  CC [M]  /tmp/vmware-config0/vmhgfs-only/dev.o
+  CC [M]  /tmp/vmware-config0/vmhgfs-only/driver.o
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsChangeFileAttributes«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:763: Fehler: »struct inode« hat kein Element namens »i_blksize«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsInitializeInode«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:835: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsIget«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:884: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsCreate«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:1535: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsLookup«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:1635: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsMkdir«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:1727: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsDelete«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:1854: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsRename«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:2046: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c:2048: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsRevalidate«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:2288: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsSetattr«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:2425: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsOpen«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:2801: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsDirOpen«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:3414: Fehler: »struct inode« hat kein Element namens »u«
+/tmp/vmware-config0/vmhgfs-only/driver.c: In Funktion »HgfsClearInode«:
+/tmp/vmware-config0/vmhgfs-only/driver.c:4105: Fehler: »struct inode« hat kein Element namens »u«
+make[2]: *** [/tmp/vmware-config0/vmhgfs-only/driver.o] Fehler 1
+make[1]: *** [_module_/tmp/vmware-config0/vmhgfs-only] Fehler 2
+make[1]: Verlasse Verzeichnis '/usr/src/linux-headers-2.6.22-14-generic'
+make: *** [vmhgfs.ko] Fehler 2
+make: Verlasse Verzeichnis '/tmp/vmware-config0/vmhgfs-only'
+Unable to build the vmhgfs module.
+
+The filesystem driver (vmhgfs module) is used only for the shared folder 
+feature. The rest of the software provided by VMware Tools is designed to work 
+independently of this feature.
+If you wish to have the shared folders feature, you can install the driver by 
+running vmware-config-tools.pl again after making sure that gcc, binutils, make
+and the kernel sources for your running kernel are installed on your machine. 
+These packages are available on your distribution's installation CD.
+[ Press Enter key to continue ] 
+
+pcnet32                34308  0 
+Unloading pcnet32 module
+
+Trying to find a suitable vmxnet module for your running kernel.
+
+None of the pre-built vmxnet modules for VMware Tools is suitable for your 
+running kernel.  Do you want this program to try to build the vmxnet module for
+your system (you need to have a C compiler installed on your system)? [yes] 
+
+Extracting the sources of the vmxnet module.
+
+Building the vmxnet module.
+
+Using 2.6.x kernel build system.
+make: Gehe in Verzeichnis '/tmp/vmware-config1/vmxnet-only'
+make -C /lib/modules/2.6.22-14-generic/build/include/.. SUBDIRS=$PWD SRCROOT=$PWD/. modules
+make[1]: Betrete Verzeichnis '/usr/src/linux-headers-2.6.22-14-generic'
+  CC [M]  /tmp/vmware-config1/vmxnet-only/vmxnet.o
+/tmp/vmware-config1/vmxnet-only/vmxnet.c: In Funktion »vmxnet_open«:
+/tmp/vmware-config1/vmxnet-only/vmxnet.c:671: Warnung: »deprecated_irq_flag« ist veraltet (deklariert bei include/linux/interrupt.h:66)
+/tmp/vmware-config1/vmxnet-only/vmxnet.c:671: Warnung: Übergabe des Arguments 2 von »request_irq« von inkompatiblem Zeigertyp
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /tmp/vmware-config1/vmxnet-only/vmxnet.mod.o
+  LD [M]  /tmp/vmware-config1/vmxnet-only/vmxnet.ko
+make[1]: Verlasse Verzeichnis '/usr/src/linux-headers-2.6.22-14-generic'
+cp -f vmxnet.ko ./../vmxnet.o
+make: Verlasse Verzeichnis '/tmp/vmware-config1/vmxnet-only'
+The module loads perfectly in the running kernel.
+
+
+
+Detected X.org version 1.3.
+
+
+
+No drivers for X.org version: 1.3.
+
+
+Please choose one of the following display sizes (1 - 13):
+
+[1]  "640x480"
+[2]  "800x600"
+[3]  "1024x768"
+[4]  "1152x864"
+[5]  "1280x800"
+[6]  "1152x900"
+[7]  "1280x1024"
+[8]  "1376x1032"
+[9]  "1400x1050"
+[10]  "1680x1050"
+[11]  "1600x1200"
+[12]  "1920x1200"
+[13]  "2364x1773"
+Please enter a number between 1 and 13:
+
+[3]      
+
+Starting VMware Tools services in the virtual machine:
+   Switching to guest configuration:-ne                                done
+
+   Guest vmxnet fast network device:-ne                                done
+
+   DMA setup:-ne                                                       done
+
+   Guest operating system daemon:-ne                                   done
+
+
+The configuration of VMware Tools 1.0.4 build-56528 for Linux for this running 
+kernel completed successfully.
+
+You must restart your X session before any mouse or graphics changes take 
+effect.
+
+You can now run VMware Tools by invoking the following command: 
+"/usr/bin/vmware-toolbox" during an X session.
+
+To make use of the vmxnet driver you will need to rebooot.
+Enjoy,
+
+--the VMware team
+
+

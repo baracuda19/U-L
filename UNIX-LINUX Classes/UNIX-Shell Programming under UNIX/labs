@@ -1,0 +1,60 @@
+tput clear
+trap 'echo Ignore Signal' SIGINT
+trap 'echo Ignore Signal' SIGTERM
+trap 'echo Ignore Signal' SIGQUIT
+trap 'echo Ignore Signal' SIGKILL
+PS3=">>>>: "
+echo 
+echo 
+echo
+echo
+echo
+echo
+echo
+echo
+echo "			Main Menu - PID = $$"
+echo
+select option in "Launch Lab 1" "Launch Lab 3" "Launch Lab 4" Exit
+do
+case $option in
+
+"Launch Lab 1") tput clear;
+		exec /home/jars/lab1;;
+
+"Launch Lab 3") tput clear;
+		exec /home/jars/lab3r;; 
+
+"Launch Lab 4") tput clear;
+		exec /home/jars/lab4;; 
+
+Exit) break;;
+
+*) tput setab 3;
+   tput clear;
+   tput setaf 4;
+   tput clear;
+   
+   for counter in 1 2 3 4 5
+   do
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo
+   echo "<<<<<<<<<<ERROR!!!  YOU ENTER A WRONG MENU OPTION>>>>>>>>>>"
+   sleep 0.5
+   tput clear
+   sleep 0.5
+   done
+   tput clear;
+   
+   exec /home/jars/labs;;
+
+esac
+done

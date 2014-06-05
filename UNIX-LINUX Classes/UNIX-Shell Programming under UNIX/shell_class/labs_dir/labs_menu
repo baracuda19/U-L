@@ -1,0 +1,25 @@
+tput clear
+PS3=">>>>: "
+select option in lab1 lab2 lab3 Exit
+do
+case $option in
+lab1) exec /home/jars/labs/lab1/lab1;;
+lab2) tput clear;
+      echo "THIS IS LAB 2";
+      sleep 5;
+      exec /home/jars/labs/labs;;
+lab3) tput clear;
+      echo "LAB 3 HAS NOT BEEN ASSIGNED YET!!!";
+      sleep 5;
+      exec /home/jars/labs/labs;; 
+Exit) tput clear;
+      tput setab 9;
+      tput setaf 9;
+      break;;
+*) tput clear;
+   echo "<<<<<<<<<<ERROR!!!  YOU ENTER A WRONG MENU OPTION>>>>>>>>>>";
+   sleep 5;
+   tput clear;
+   exec /home/jars/labs/labs;;
+esac
+done

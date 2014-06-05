@@ -1,0 +1,160 @@
+tput setab 3    #sets initial background color
+tput clear      
+tput setaf 4    #sets initial foreground color
+tput clear
+
+sleep 5
+
+function function_color   #beginning of the function that choses bg anf fg color
+{
+
+let bg=`echo $RANDOM | cut -c 1`   #chooses background color code randomly
+let fg=`echo $RANDOM | cut -c 1`   #chooses foreground color code randomly
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   let bg=`echo $RANDOM | cut -c 1`
+   let fg=`echo $RANDOM | cut -c 1`
+
+	if [ $bg || $fg -gt 7 ]     #catches the wrong color codes
+	then
+	   bg=6
+	   fg=3
+	fi
+fi
+
+if [ $bg -gt 7 ]                   #catches the wrong color codes
+then
+   bg=$bg-2
+fi
+
+if [ $fg -gt 7 ]                   #catches the wrong color codes
+then
+   fg=$fg-2
+fi
+
+if [ $bg -eq $fg ]                 #catches the wrong color codes
+then
+   bg=$bg-1
+fi
+
+tput setab $bg                     #sets background color dynamically
+tput setaf $fg                     #sets foreground color dyanmically
+}				   #end of the function
+
+sleep 2
+
+function_color			   #dynamically sets back and foreground color
+tput clear
+
+Pr=Process			   #creates variables
+Pa=Parent
+ID=id
+readonly Pr Pa ID		   #sets the variables unchangable
+
+################Beginning of general information########################
+echo "			General Information"
+echo
+echo
+echo
+echo
+echo
+echo "Login Name:		`who am i | cut -f1 -d " "`"
+echo
+echo
+echo
+echo "User-$ID:			`id | cut -f2 -d "=" | cut -c1-4`"
+echo
+echo
+echo
+echo "$Pr Name:			$0"
+echo
+echo
+echo
+echo "$Pr-$ID:			$$"  #`ps r | grep bash | cut -f2 -d " "`"
+sleep 10
+tput clear
+###################End of general information###################
+
+function_color			#dynamically sets bg and fg colors
+tput clear
+##################beginning of script environment info##########
+echo "                  Script Environment"
+echo
+echo
+echo
+echo
+echo
+echo
+echo
+echo
+echo "Current Shell Type:	$SHELL"
+echo
+echo
+echo
+echo "$Pa $Pr Name:		`ps -l | grep $PPID | cut -f27 -d " "`"
+echo
+echo
+echo
+echo "$Pa $Pr-$ID:		$PPID"
+echo
+echo
+echo
+echo "Accumulated Seconds:	$SECONDS"
+sleep 10
+tput clear
+##################end of script environment info#################
+
+function_color
+tput clear
+##################beginning of directory info####################
+echo "                   Directory Information"
+echo
+echo
+echo
+echo "Home Directory=		$HOME"
+echo
+echo
+echo
+echo "Current Directory=	$PWD"
+echo
+echo
+echo
+sleep 3
+function_color		#dynamically choses screen colors
+tput clear
+sleep 4
+tput setab 3   	  	#sets initial screen colors
+tput setaf 4
+tput clear
+sleep 2
+tput rev
+sleep 3		#reverses the video
+tput clear
+echo "Enter FULL pathname of next directory:"
+read fullpath
+cd $fullpath	
+tput rmso		#turns off the reversed video
+sleep 2
+tput clear
+sleep 3
+function_color
+tput clear
+sleep 3
+echo "Current Directory=	$PWD"
+echo
+echo
+echo
+echo "Previous Directory=	$OLDPWD"
+sleep 5
+tput setab 3		#sets the initial screen colors
+tput setaf 4
+sleep 10
+##################End of directory info#######################
+
+tput setab 9		#sets the original shell colors
+tput clear
+tput setaf 9
+tput clear
+sleep 5
+exec /home/jars/labs

@@ -1,0 +1,33 @@
+#Ugur Altindag
+#Shell Programming under UNIX
+#Lab1-Part C
+#10/18/2007
+
+tput clear                          #Clears screen
+N=Name				    #Assign value to a variable
+S=Set
+O=One
+T=Two
+Z=Three
+readonly N S O T Z		    #makes variables readonly
+print $N $S number-${O} '\t' $1 '\t' $2     #prints first line of first set 
+shift; shift                         #shifts 2 times positions of the arguments
+print '\n\n'$N $S number-${O} '\t' $1 '\t' $2 #prints second line of first set
+shift; shift 
+print '\n\n'$N $S number-${O} '\t' $1 '\n\a\a' #prints thitd line of first set
+sleep 5					#sleeps 5 seconds
+tput clear
+shift
+print $N $S number-${T} '\t' $1 '\t' $2  #prints first line of second set
+shift; shift                   
+print '\n\n'$N $S number-${T} '\t' $1 '\t' $2 
+shift; shift 
+print '\n\n'$N $S number-${T} '\t' $1 '\n\a\a'
+sleep 5
+tput clear
+shift
+print $N $S number-${Z} '\t' $1 '\t' $2     #prints first line of third set
+shift; shift                   
+print '\n\n'$N $S number-${Z} '\t' $1 '\t' $2 
+shift; shift 
+print '\n\n'$N $S number-${Z} '\t' $1 '\n\a\a'

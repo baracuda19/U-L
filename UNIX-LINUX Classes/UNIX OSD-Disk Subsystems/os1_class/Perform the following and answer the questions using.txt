@@ -1,0 +1,41 @@
+
+Perform the following and answer the questions using ‘fsdb’ utility only.
+
+
+1) Preparation:
+
+* Re-create  your filing system using  ‘mkfs’  command
+* Mount  your  filing  system  using  ‘mount’ command
+* Verify your filing system is mounted using ‘mount’ command
+* Move to your mount-point directory using ‘cd’ command
+
+2) Exercise Creation:
+
+* Execute  /commands/whirl-1
+
+3) Answer the following commands using ‘fsdb’ utility ONLY.
+
+	
+* How many files existed in the root directory and where removed?
+
+                   
+* What are the names of  the root directory children?
+
+* How many children were created in the first root directory child?
+
+* What type of child was created?
+
+* How many children were created in the second root directory child?
+
+* What type of child was created?
+
+* How many children were created in the third root directory chile?
+
+* What type of child was created?
+
+
+	
+
+                  
+                  
+

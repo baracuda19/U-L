@@ -1,0 +1,13 @@
+#Ugur Altindag
+#Shell Programming under UNIX
+#Lab1-Part B
+#10/08/2007
+
+tput clear                          #Clear screen
+echo $1 $2 $3 $4 $5		    #Print first 5 arguments
+sleep 5				    #wait 5 seconds
+echo $6 $7 $8 $9 ${10}              #print second 5 arguments
+sleep 5
+echo ${11} ${12} ${13} ${14} ${15}  #print third 5 arguments
+sleep 5
+exec /home/jars/labs/lab1/lab1
